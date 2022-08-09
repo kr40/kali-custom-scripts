@@ -64,7 +64,7 @@ elif [[ $vpn == "htb-startingpoint" ]]; then
         cd "$boxname" || exit
         mkdir "nmap"
         cp ~/Desktop/ctf/htb/htb_startingpoint/tier_1/template.md ~/Desktop/ctf/htb/htb_startingpoint/tier_1/"$boxname"/README.md || exit
-    elif [[ $tier == 0 ]]; then
+    elif [[ $tier == 2 ]]; then
         cd Desktop/ctf/htb/htb_startingpoint/tier_2 || exit
         mkdir "$boxname"
         cd "$boxname" || exit
