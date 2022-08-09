@@ -46,29 +46,29 @@ fi
 read -p "Enter the CTF Box Name:" boxname
 
 if [[ $vpn == "htb-labs" ]]; then
-    cd Desktop/ctf/htb/htb_labs || exit
+    cd ~/Desktop/ctf/htb/htb_labs || exit
     mkdir "$boxname"
     cd "$boxname" || exit
     mkdir nmap
-    cd Desktop/ctf/htb/htb_labs/"$boxname" || exit
+    cd ~/Desktop/ctf/htb/htb_labs/"$boxname" || exit
 elif [[ $vpn == "htb-startingpoint" ]]; then
     read -p "Enter the tier (0,1,2):" tier
     if [[ $tier == 0 ]]; then
-        cd Desktop/ctf/htb/htb_startingpoint/tier_0/ || exit
+        cd ~/Desktop/ctf/htb/htb_startingpoint/tier_0 || exit
         mkdir "$boxname"
         cd "$boxname" || exit
         mkdir "nmap"
         cp ~/Desktop/ctf/htb/htb_startingpoint/tier_0/template.md ~/Desktop/ctf/htb/htb_startingpoint/tier_0/"$boxname"/README.md || exit
         cd ~/Desktop/ctf/htb/htb_startingpoint/tier_0/"$boxname" || exit
     elif [[ $tier == 1 ]]; then
-        cd Desktop/ctf/htb/htb_startingpoint/tier_1/ || exit
+        cd ~/Desktop/ctf/htb/htb_startingpoint/tier_1 || exit
         mkdir "$boxname"
         cd "$boxname" || exit
         mkdir "nmap"
         cp ~/Desktop/ctf/htb/htb_startingpoint/tier_1/template.md ~/Desktop/ctf/htb/htb_startingpoint/tier_1/"$boxname"/README.md || exit
         cd ~/Desktop/ctf/htb/htb_startingpoint/tier_1/"$boxname" || exit
     elif [[ $tier == 0 ]]; then
-        cd Desktop/ctf/htb/htb_startingpoint/tier_2/ || exit
+        cd Desktop/ctf/htb/htb_startingpoint/tier_2 || exit
         mkdir "$boxname"
         cd "$boxname" || exit
         mkdir "nmap"
@@ -76,17 +76,17 @@ elif [[ $vpn == "htb-startingpoint" ]]; then
         cd ~/Desktop/ctf/htb/htb_startingpoint/tier_2/"$boxname" || exit
     fi
 elif [[ $vpn == "htb-academy" ]]; then
-    cd Desktop/ctf/htb/htb_academy || exit
+    cd ~/Desktop/ctf/htb/htb_academy || exit
     mkdir "$boxname"
     cd "$boxname" || exit
     mkdir nmap
-    cd Desktop/ctf/htb/htb_academy/"$boxname" || exit
+    cd ~/Desktop/ctf/htb/htb_academy/"$boxname" || exit
 elif [[ $vpn == "thm" ]]; then
     cd Desktop/ctf/thm || exit
     mkdir "$boxname"
     cd "$boxname" || exit
     mkdir nmap
-    cd Desktop/ctf/thm/"$boxname" || exit
+    cd ~/Desktop/ctf/thm/"$boxname" || exit
 fi
 
 echo "Added Necessary Files and Folders for your CTF Box!! Happy Hacking"
