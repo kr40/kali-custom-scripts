@@ -24,11 +24,9 @@ sleep 1
 
 # VPN check
 if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"; then
-    echo "VPN already running. If it is not the correct one please close and try again!"
+    echo "VPN already running. If it is not the correct one, please close it and try again!"
 else
     read -p "Enter the CTF VPN to start? (htb-labs, htb-startingpoint, htb-academy, thm):" vpn
-
-    echo "You chose $vpn"
 
     echo "Starting $vpn vpn via OpenVPN"
 
@@ -45,7 +43,8 @@ else
     fi
 
     if [[ $? == 0 ]]; then
-        echo "$vpn Started"
+        echo "Please Enter your sudo password on the other terminal"
+        echo "$vpn Started!"
     fi
 fi
 
