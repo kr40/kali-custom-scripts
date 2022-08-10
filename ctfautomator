@@ -50,6 +50,10 @@ fi
 
 read -p "Enter the CTF Box Name:" boxname
 
+if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"; then
+    read -p "Enter the VPN that is already running: (htb-labs, htb-startingpoint, htb-academy, thm):" vpn
+fi
+
 if [[ $vpn == "htb-labs" ]]; then
     cd ~/Desktop/ctf/htb/htb_labs || exit
     mkdir "$boxname"
@@ -88,5 +92,8 @@ elif [[ $vpn == "thm" ]]; then
     mkdir nmap
 fi
 
+tunip=$(ifconfig tun0 | grep 'inet ' | cut -d' ' -f10)
+
+echo "Your VPN IP is ${tunip}"
 echo "Added Necessary Files and Folders for your CTF Box!! Happy Hacking"
 exit 0
