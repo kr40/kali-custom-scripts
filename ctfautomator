@@ -21,12 +21,16 @@ bannerSimple "CTF Automator" "*"
 
 printf 'This is a simple script to automate the process of making directories and files for CTF\n'
 sleep 1
+echo
 
 # VPN check
-if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"; then
-    echo "VPN already running. If it is not the correct one, please close it and try again!"
+if ifconfig tun0 2>/dev/null | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"; then
+    echo "A VPN is already running. If it is not the correct one, please close it and try again!"
+    echo
+    read -p "Enter the VPN that is already running: (htb-labs, htb-startingpoint, htb-academy, thm):" vpn
 else
     read -p "Enter the CTF VPN to start? (htb-labs, htb-startingpoint, htb-academy, thm):" vpn
+    echo
 
     echo "Starting $vpn vpn via OpenVPN"
 
@@ -42,17 +46,15 @@ else
         echo "Please enter the correct name"
     fi
 
-    if [[ $? == 0 ]]; then
-        echo "Please Enter your sudo password on the other terminal"
-        echo "$vpn Started!"
-    fi
+    echo
+
+    echo "Please enter your sudo password on the other terminal"
+
 fi
+
+echo
 
 read -p "Enter the CTF Box Name:" boxname
-
-if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"; then
-    read -p "Enter the VPN that is already running: (htb-labs, htb-startingpoint, htb-academy, thm):" vpn
-fi
 
 if [[ $vpn == "htb-labs" ]]; then
     cd ~/Desktop/ctf/htb/htb_labs || exit
@@ -61,6 +63,7 @@ if [[ $vpn == "htb-labs" ]]; then
     mkdir nmap
 elif [[ $vpn == "htb-startingpoint" ]]; then
     read -p "Enter the tier (0,1,2):" tier
+    echo
     if [[ $tier == 0 ]]; then
         cd ~/Desktop/ctf/htb/htb_startingpoint/tier_0 || exit
         mkdir "$boxname"
@@ -93,7 +96,8 @@ elif [[ $vpn == "thm" ]]; then
 fi
 
 tunip=$(ifconfig tun0 | grep 'inet ' | cut -d' ' -f10)
-
+echo
 echo "Your VPN IP is ${tunip}"
-echo "Added Necessary Files and Folders for your CTF Box!! Happy Hacking"
+echo
+echo "Added Necessary Files and Folders for your CTF Box!! Happy Hacking :)"
 exit 0
